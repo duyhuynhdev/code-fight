@@ -28,7 +28,7 @@ Given an array a that contains only numbers in the range from 1 to a.length, fin
 
   The element in a that occurs in the array more than once and has the minimal index for its second occurrence. If there are no such elements, return `-1`.
 
-## My first solution
+## First approach
 
 ```Java
 int firstDuplicate(int[] a) {
@@ -60,7 +60,7 @@ The reason why test case 22 false is the time limit exceeding because we use two
 ```Java
 int firstDuplicate(int[] a) {
     boolean[] flag = new boolean[a.length];
-    for(int i =0; i < a.length; i++){
+    for(int i = 0; i < a.length; i++){
         if(flag[a[i]-1] == true) return a[i];
        flag[a[i]-1] = true;
     }   
@@ -71,3 +71,16 @@ int firstDuplicate(int[] a) {
 > **Sample tests:** 11/11<br>
 > **Hidden tests:** 11/11<br>
 > **Score:** 300/300<br>
+
+## Optimized solution
+
+In this solution we use  exactly `a[]` as the `flag[]`. Because `a[i] > 0` for all case so we use `-a[i]` as `flag` for the appearance of value `i`. 
+```Java
+int firstDuplicate(int[] a) {
+    for(int i = 0; i < a.length; i++){
+        if(a[a[i]-1] < 0) return a[i];
+       a[a[i]-1] = -1 * a[a[i]-1] ;
+    }   
+    return -1;
+}
+```
