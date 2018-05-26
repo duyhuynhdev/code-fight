@@ -21,7 +21,7 @@ Given an array a that contains only numbers in the range from 1 to a.length, fin
 * **[input] array.integer a**
 
 * **Guaranteed constraints:**
-`1 ≤ a.length ≤ 105`,
+`1 ≤ a.length ≤ 10^5`,
 `1 ≤ a[i] ≤ a.length`.
 
 * **[output] integer**
@@ -50,3 +50,24 @@ int firstDuplicate(int[] a) {
 > **Sample tests:** 11/11<br>
 > **Hidden tests:** 10/11<br>
 > **Score:** 214/300<br>
+
+## Diagnose the problem
+
+The reason why test case 22 false is the time limit exceeding because we use two for loop in the previous solution. So now we try to find another solution. Generally, our behavior is scanning from left to right of an array and checking whether the value in current index appear before or not. If yes, we will return this value. Otherwise, return `-1`. However, in this solution, we also use one loop for checking the appearance of current value, therefore, it also contains 2 for loops. For decreasing the number of loop, we should use an array for saving the values which appeared before. The critical point is `1 ≤ a[i] ≤ a.length` that means we can use an array has the same length for tracking a value in `a[]`. Hence, we create a `flag[]` which has the value is true if the `index+1` of `flag[]` has been seen before in `a`. For example, if `2` appear before in `a`, `flag[1] = true`.  We scan `a[]` with only one for loop and if `flag[a[i]-1] == true` that means `a[i]` appeared before, so we can `return a[i]`. The full script of this solution is shown in the next section.
+
+## Final solution
+
+```Java
+int firstDuplicate(int[] a) {
+    boolean[] flag = new boolean[a.length];
+    for(int i =0; i < a.length; i++){
+        if(flag[a[i]-1] == true) return a[i];
+       flag[a[i]-1] = true;
+    }   
+    return -1;
+}
+```
+> **Result:** 22/22 All tests passed<br>
+> **Sample tests:** 11/11<br>
+> **Hidden tests:** 11/11<br>
+> **Score:** 300/300<br>
