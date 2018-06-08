@@ -1,6 +1,6 @@
 # Add
 
- Code fight problem and its solution which solved by me - Duy Huynh.
+ Code fight problem and its solution which is solved by me - Duy Huynh.
  
 ## Problem
 
