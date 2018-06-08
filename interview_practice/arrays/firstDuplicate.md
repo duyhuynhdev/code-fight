@@ -1,4 +1,4 @@
-# firstDuplicate
+# First Duplicate
 
 Interview question asked by **Google**
 
