@@ -30,3 +30,13 @@ A `1`-interesting polygon is just a square with a side of length `1`. An n-inter
 * **[output] integer**
 
     The area of the n-interesting polygon.
+
+## Solution
+```Java
+int shapeArea(int n) {
+    if(n==1)
+        return 1;
+    return shapeArea(n-1)+ (n*2)+(n-2)*2;
+}
+
+```
