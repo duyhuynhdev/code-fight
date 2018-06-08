@@ -1,4 +1,6 @@
-# firstNotRepeatingCharacter
+# First Not Repeating Character
+
+Interview question asked by **Amazon**
 
 ## Problem
 
@@ -63,5 +65,13 @@ For implementation, we know that `s contains only lowercase English letters`. Th
 > **Hidden tests:** 11/11<br>
 > **Score:** 300/300<br>
 ## Pretty Code
-  
+```Java
+char firstNotRepeatingCharacter(String s) {
+    for(char ch: s.toCharArray()){
+        if(s.indexOf(ch)==s.lastIndexOf(ch))
+            return ch;
+    }
+    return '_';
+}
+```
  
